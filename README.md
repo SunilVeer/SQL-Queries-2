@@ -1,7 +1,7 @@
 # SQL-Queries-2
 
 ## The relational schema for the Academics database is as follows:
-(Foreign keys are marked with *)
+(Foreign keys are marked with * )
 DEPARTMENT(deptnum, descrip, instname, deptname, state, postcode) Primary key is deptnum
 ACADEMIC(acnum, deptnum*, famname, givename, initials, title) Primary key is acnum
 PAPER(panum, title) Primary key is panum
