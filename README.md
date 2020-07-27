@@ -1,13 +1,13 @@
 # SQL-Queries-2
 
 ## The relational schema for the Academics database is as follows:
-DEPARTMENT(deptnum, descrip, instname, deptname, state, postcode) Primary key
-ACADEMIC(acnum, deptnum*, famname, givename, initials, title)
-PAPER(panum, title)
-AUTHOR(panum*, acnum*)
-FIELD(fieldnum, id, title)
-INTEREST(fieldnum*, acnum*, descrip)
-Primary keys are underlined and foreign keys are marked with *. 
+(Foreign keys are marked with *)
+DEPARTMENT(deptnum, descrip, instname, deptname, state, postcode) Primary key is deptnum
+ACADEMIC(acnum, deptnum*, famname, givename, initials, title) Primary key is acnum
+PAPER(panum, title) Primary key is panum
+AUTHOR(panum*, acnum*) Primary keys are panum, acnum
+FIELD(fieldnum, id, title) Primary key is fieldnum
+INTEREST(fieldnum*, acnum*, descrip) Primary keys are fieldnum, acnum 
 
 ## Some notes on the Academics database:
 ●  	An academic department belongs to one institution (instname) and often has many academics. An academic only works for one department.
