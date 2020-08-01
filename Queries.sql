@@ -31,3 +31,36 @@ group by acnum
 having count(fieldnum)>=ALL(select count (fieldnum)
 from interest
 group by acnum);
+
+--6)
+select count(acnum)
+from academic
+where acnum NOT IN (select acnum from interest);
+
+--7)
+select distinct p.panum,p.title
+from paper p,author au,interest i
+where p.panum=au.panum
+and au.acnum=i.acnum
+and lower(p.title) like '%data%'
+and exists (select * from academic a where a.acnum = i.acnum and a.deptnum=100);
+
+--8)
+select distinct au1.panum
+from author au1, academic ac1, author au2, academic ac2
+where au1.acnum = ac1.acnum
+and au2.acnum = ac2.acnum
+and au1.acnum < au2.acnum
+and ac1.deptnum != ac2.deptnum
+and au1.panum = au2.panum;
+
+--9)
+(select p.panum from paper p)
+MINUS
+(select au.panum from author au, academic a where au.acnum=a.acnum and a.deptnum != 126);
+
+--10)
+--inner query
+Give fieldnum of anyone’s research interest whose description has ‘LOGIC’ string in it.
+--whole query
+Give acnum of an academic whose research interest has both ‘LOGIC’ as well as does not have ‘LOGIC’ in description.
